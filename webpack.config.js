@@ -91,7 +91,11 @@ export default (env, argv) => {
             new HtmlWebpackInlineSVGPlugin(),
             new CopyWebpackPlugin({
                 patterns: [
+                    // Manually point to the file to ensure it moves
+                    { from: 'public/coi-serviceworker.js', to: 'coi-serviceworker.js' }, 
                     { from: 'public/*.+(ico|png|svg|webmanifest)', to: '[name][ext]' },
+                    // Also ensure the wasm binaries are present
+                    { from: 'node_modules/yosys2digitaljs/dist/*.+(js|wasm)', to: '[name][ext]' },
                     { from: 'node_modules/yosys2digitaljs/tests/*.sv', to: 'examples/[name][ext]' }
                 ]
             })
