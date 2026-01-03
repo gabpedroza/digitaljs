@@ -4,8 +4,8 @@ const MEMORY_CONFIG = {
 };
 
 const FILES = {
-    WASM: '/verilator_bin.wasm',
-    GLUE: '/verilator_bin.js',
+    WASM: 'verilator_bin.wasm',
+    GLUE: 'verilator_bin.js',
 };
 
 class VerilatorManager {
