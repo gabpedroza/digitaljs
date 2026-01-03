@@ -26,6 +26,7 @@ export default (env, argv) => {
             filename: "bundle.js",
             module: true,
             chunkFormat: "module",
+            publicPath: devMode ? '/' : '/digitaljs/',
         },
         target: "web",
         module: {
@@ -71,6 +72,10 @@ export default (env, argv) => {
         devServer: {
             port: 3000,
             open: true,
+            headers: {
+                "Cross-Origin-Opener-Policy": "same-origin",
+                "Cross-Origin-Embedder-Policy": "require-corp",
+            },
             proxy: {
                 "/api": "http://localhost:8080"
             }
