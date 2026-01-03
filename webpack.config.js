@@ -28,6 +28,13 @@ export default (env, argv) => {
             chunkFormat: "module",
             publicPath: devMode ? '/' : '/digitaljs/',
         },
+        // Add this inside the export function, at the same level as 'entry' or 'output'
+        resolve: {
+            alias: {
+                // This forces the app to look for the binaries in the right place
+                'verilator_bin.js': join(__dirname, 'node_modules/yosys2digitaljs/dist/verilator_bin.js'),
+            }
+        },
         target: "web",
         module: {
             rules: [
@@ -91,11 +98,11 @@ export default (env, argv) => {
             new HtmlWebpackInlineSVGPlugin(),
             new CopyWebpackPlugin({
                 patterns: [
-                    // Manually point to the file to ensure it moves
-                    { from: 'public/coi-serviceworker.js', to: 'coi-serviceworker.js' }, 
+                    { from: 'public/coi-serviceworker.js', to: '.' },
                     { from: 'public/*.+(ico|png|svg|webmanifest)', to: '[name][ext]' },
-                    // Also ensure the wasm binaries are present
-                    { from: 'node_modules/yosys2digitaljs/dist/*.+(js|wasm)', to: '[name][ext]' },
+                    // This is the critical change:
+                    { from: 'node_modules/yosys2digitaljs/dist/verilator_bin.{js,wasm}', to: '[name][ext]' },
+                    { from: 'node_modules/@yowasp/yosys/yosys.{js,wasm}', to: '[name][ext]' },
                     { from: 'node_modules/yosys2digitaljs/tests/*.sv', to: 'examples/[name][ext]' }
                 ]
             })
