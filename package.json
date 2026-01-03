@@ -31,13 +31,13 @@
     "split-grid": "^1.0.11",
     "sql-template-strings": "^2.2.2",
     "sqlite": "^4.0.23",
-    "sqlite3": "^5.0.2",
-    "yosys2digitaljs": "^0.9.1"
+    "sqlite3": "^5.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.17.0",
     "@babel/plugin-proposal-class-properties": "^7.16.7",
     "@babel/plugin-proposal-private-methods": "^7.16.11",
+    "@yowasp/yosys": "^0.59.84-dev.1027",
     "ajv": "^8.8.2",
     "babel-loader": "^8.2.3",
     "clean-webpack-plugin": "^2.0.2",
@@ -54,7 +54,8 @@
     "style-loader": "^3.3.1",
     "webpack": "^5.104.0",
     "webpack-cli": "^4.9.2",
-    "webpack-dev-server": "^4.7.4"
+    "webpack-dev-server": "^4.7.4",
+    "yosys2digitaljs": "^0.9.1"
   },
   "homepage": "https://github.com/tilk/digitaljs_online",
   "repository": {
