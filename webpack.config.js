@@ -99,12 +99,11 @@ export default (env, argv) => {
             new CopyWebpackPlugin({
                 patterns: [
                     { from: 'public/coi-serviceworker.js', to: '.' },
+                    { from: 'public/yosys.js', to: '.' }, // This is the renamed bundle.js
+                    { from: 'public/yosys.core*.wasm', to: '.' },
+                    { from: 'public/verilator_bin.js', to: '.' },
+                    { from: 'public/verilator_bin.wasm', to: '.' },
                     { from: 'public/*.+(ico|png|svg|webmanifest)', to: '[name][ext]' },
-                    // Updated paths for nested node_modules
-                    { from: 'node_modules/yosys2digitaljs/verilator_bin.js', to: '.' },
-                    { from: 'node_modules/yosys2digitaljs/verilator_bin.wasm', to: '.' },
-                    { from: 'node_modules/@yowasp/yosys/yosys.js', to: '.' },
-                    { from: 'node_modules/@yowasp/yosys/yosys.wasm', to: '.' },
                     { from: 'node_modules/yosys2digitaljs/tests/*.sv', to: 'examples/[name][ext]' }
                 ]
             })
