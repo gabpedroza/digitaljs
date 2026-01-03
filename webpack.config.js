@@ -100,9 +100,11 @@ export default (env, argv) => {
                 patterns: [
                     { from: 'public/coi-serviceworker.js', to: '.' },
                     { from: 'public/*.+(ico|png|svg|webmanifest)', to: '[name][ext]' },
-                    // This is the critical change:
-                    { from: 'node_modules/yosys2digitaljs/dist/verilator_bin.{js,wasm}', to: '[name][ext]' },
-                    { from: 'node_modules/@yowasp/yosys/yosys.{js,wasm}', to: '[name][ext]' },
+                    // Explicitly copy each file one by one
+                    { from: 'node_modules/yosys2digitaljs/dist/verilator_bin.js', to: '.' },
+                    { from: 'node_modules/yosys2digitaljs/dist/verilator_bin.wasm', to: '.' },
+                    { from: 'node_modules/@yowasp/yosys/gen/yosys.js', to: '.' },
+                    { from: 'node_modules/@yowasp/yosys/gen/yosys.wasm', to: '.' },
                     { from: 'node_modules/yosys2digitaljs/tests/*.sv', to: 'examples/[name][ext]' }
                 ]
             })
